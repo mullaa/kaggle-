@@ -4,7 +4,8 @@
   
   Target User(s): Severstal
   
-  User Stories
+  User Stories:
+  
   The user wants to help make production of steel more efficient by identifying defect.
   The user will provide a set of images with potential defects from high frequency cameras to power a defect detection      algorithm.
   The user can get the location of the surface defects on a steel sheet.
