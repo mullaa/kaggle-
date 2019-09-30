@@ -28,8 +28,11 @@
 
 ## System Design
   Major Components you think you will use:
+    
     OpenCV library
+    
     Matplotlib
+    
     Python
 
   Technology Selection and reason behind selection including comparisons:
