@@ -19,7 +19,7 @@
   Several different users who have attempted the Kaggle competition
   Severstal currently has an algorithm but will be refining based on user attempts.
   
-  Patent Analysis
+  Patent Analysis:
 
 ## System Design
   Major Components you think you will use:
