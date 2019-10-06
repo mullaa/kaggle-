@@ -46,14 +46,14 @@ Class 4
   Several different users who have attempted the Kaggle competition
   Severstal currently has an algorithm but will be refining based on user attempts.
   
-  Example of anomaly detection papers
+  Example of some anomaly detection papers
   https://www.researchgate.net/publication/224207917_Automatic_Detection_of_Surface_Defects_on_Rolled_Steel_Using_Computer_Vision_and_Artificial_Neural_Networks
   
   http://people.idsia.ch/~juergen/ijcnn2012steel.pdf
   
   http://mit.imt.si/Revija/izvodi/mit171/zhou.pdf
   
-  Patent Analysis:
+  Research papers google drive link https://drive.google.com/drive/u/2/folders/0AHsq8E1UVd5mUk9PVA
 
 ## System Design
   Major Components you think you will use:
