@@ -33,7 +33,7 @@ Class 4
   ## MVP
   The product will at a minimum be able to classify the image, its defect pixel location and output results into a folder for the user to view.
   
-  # Initial Plan of Attack
+  ## Initial Plan of Attack
   
   -Pick a classification method and beginning small set training and classifcation. The reason why we try small data sets first is because images have many pixels. This in turn increases the processing time. 
   
