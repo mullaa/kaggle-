@@ -15,6 +15,14 @@ Class 3
 
 Class 4
 <img src="https://github.com/mullaa/kaggle-/blob/master/pictures/defects/class%204.png">
+
+Multi-class
+
+<img src="https://github.com/mullaa/kaggle-/blob/master/pictures/defects/2%20label.png">
+
+Triple-class
+
+<img src="https://github.com/mullaa/kaggle-/blob/master/pictures/defects/3%20label.png">
   
   Target User(s): Severstal and other steel manufacturers
   
@@ -31,7 +39,7 @@ Class 4
   The companies can use our algorithm to  improve the qualities of their products.
   
   ## MVP
-  The product will at a minimum be able to classify the image, its defect pixel location and output results into a folder for the user to view. For this product, a user interface is not required, but if time permits, we will create a simple user interface to allow the user to point to the directory of images for classification. There will be another window that outputs all the image defects for viewing, along with their filename.
+  The product will at a minimum be able to classify the image, its defect pixel location and output results into a folder for the user to view. The product will identify with moderate accuracy all four class type defects. For this product, a user interface is not required, but if time permits, we will create a simple user interface to allow the user to point to the directory of images for classification. There will be another window that outputs all the image defects for viewing, along with their filename. Also if times permits, we will refine our algorithm to be able to identify multi-label defects and triple-label defects
  
   ## Initial Plan of Attack
   
