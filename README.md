@@ -31,15 +31,13 @@ Class 4
   The companies can use our algorithm to  improve the qualities of their products.
   
   ## MVP
-  The product will at a minimum be able to classify the image, its defect pixel location and output results into a folder for the user to view.
-  
+  The product will at a minimum be able to classify the image, its defect pixel location and output results into a folder for the user to view. For this product, a user interface is not required, but if time permits, we will create a simple user interface to allow the user to point to the directory of images for classification. There will be another window that outputs all the image defects for viewing, along with their filename.
+ 
   ## Initial Plan of Attack
   
   -Pick a classification method and beginning small set training and classifcation. The reason why we try small data sets first is because images have many pixels. This in turn increases the processing time. 
   
   -Obtain the relevent permissions need to access BU's supercomputer.
-  
-  (Severstal)User Interface Design for main user story if required - for this product a user interface is not required.   However, the product will provide images with boxes clearly identifying defects in the steel in a folder.
   
  ## Product Survey 
   Existing similar products:
