@@ -70,9 +70,12 @@ Class 4
     Different algorithm. Eg: Anomaly detection,k-nearest neighbors/k-NN, SVM, CNN (Convolution Neural Networks)
     Any test or verification programs
     
+  Testing scenario:
+  
     Separate a small set of defect images for testing.
     Compared the predicted output csv with testing output csv and determine error detection rate.
-
-    Visual test on a small sample first to verify the algorithm is working correctly. Eg: start with 50 samples, use OpenCV           library to plot predicted anomaly locations and refine algorithm. Afterwards, try another set of 50 samples. In the end,       try algorithm on larger data sets.
+    Visual test on a small sample first to verify the algorithm is working correctly. 
+    Eg: start with 50 samples, use OpenCV library to plot predicted anomaly locations and refine algorithm. 
+    Afterwards, try another set of 50 samples. In the end, try algorithm on larger data sets.
 
 
