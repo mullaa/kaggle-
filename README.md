@@ -45,6 +45,8 @@ Class 4
   
   http://people.idsia.ch/~juergen/ijcnn2012steel.pdf
   
+  http://mit.imt.si/Revija/izvodi/mit171/zhou.pdf
+  
   Patent Analysis:
 
 ## System Design
