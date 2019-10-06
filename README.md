@@ -40,6 +40,11 @@ Class 4
   Several different users who have attempted the Kaggle competition
   Severstal currently has an algorithm but will be refining based on user attempts.
   
+  Example of anomaly detection papers
+  https://www.researchgate.net/publication/224207917_Automatic_Detection_of_Surface_Defects_on_Rolled_Steel_Using_Computer_Vision_and_Artificial_Neural_Networks
+  
+  http://people.idsia.ch/~juergen/ijcnn2012steel.pdf
+  
   Patent Analysis:
 
 ## System Design
@@ -62,7 +67,6 @@ Class 4
     Separate a small set of defect images for testing.
     Compared the predicted output csv with testing output csv and determine error detection rate.
 
-    
     Visual test on a small sample first to verify the algorithm is working correctly. Eg: start with 50 samples, use OpenCV           library to plot predicted anomaly locations and refine algorithm. Afterwards, try another set of 50 samples. In the end,       try algorithm on larger data sets.
 
 
