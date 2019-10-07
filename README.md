@@ -67,6 +67,11 @@ Triple-class
   Research papers google drive link https://drive.google.com/drive/u/2/folders/0AHsq8E1UVd5mUk9PVA
 
 ## System Design
+
+The flowchart of the system:
+
+<img src="https://github.com/mullaa/kaggle-/blob/master/pictures/defects/Kaggle_flowchart.png">
+  
   Major Components you think you will use:
     
     OpenCV library
@@ -96,7 +101,4 @@ Before CNN, we need to spend time on selecting the proper features for classifyi
     Eg: start with 50 samples, use OpenCV library to plot predicted anomaly locations and refine algorithm. 
     Afterwards, try another set of 50 samples. In the end, try algorithm on larger data sets.
 
-The flowchart of the system:
-
-<img src="https://github.com/mullaa/kaggle-/blob/master/pictures/defects/Kaggle_flowchart.png">
 
