@@ -50,7 +50,7 @@ Triple-class
   
   -After picking a classification method, we begin optimization on a small training set and test set classifcation. The reason why we try small data sets first is because images have many pixels. This in turn increases the processing time. 
   
-  -Obtain the relevent permissions need to access BU's supercomputer.
+  -Obtain the relevent permissions needed to access BU's supercomputer.
   
  ## Product Survey 
   Existing similar products:
@@ -82,7 +82,7 @@ Triple-class
     Python is one of the languages required by the Kaggle competition
     Different algorithm. Eg: Anomaly detection,k-nearest neighbors/k-NN, SVM, logistic regression, random forest, and CNN (Convolution Neural Networks)
     CNN apparently does all the busy work to extract the features from the images. It handles the entire feature engineering part. In typical CNN architectures, there are multiple layers. Beginning layers are extracting the low-level features and end level layers extract high-level features from the image.
-    The difficulty for images is extracting the correct features for classification which apparenly CNN solves.
+    The difficulty for images is extracting the correct features for classification which apparenlty CNN solves.
 
 Before CNN, we need to spend time on selecting the proper features for classifying the image.
     
