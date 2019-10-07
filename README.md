@@ -48,7 +48,7 @@ Triple-class
   
   -We all agree on a dataset and start to really work on optimizing the classification.
   
-  -Pick a classification method and beginning small set training and classifcation. The reason why we try small data sets first is because images have many pixels. This in turn increases the processing time. 
+  -After picking a classification method, we begin optimization on a small training set and test set classifcation. The reason why we try small data sets first is because images have many pixels. This in turn increases the processing time. 
   
   -Obtain the relevent permissions need to access BU's supercomputer.
   
