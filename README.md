@@ -81,6 +81,8 @@ The flowchart of the system:
     Python
     
     Tensorflow
+    
+    Torch
 
   Technology Selection and reason behind selection including comparisons:
     OpenCV library is widely used and supported.
