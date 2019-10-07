@@ -83,6 +83,8 @@ The flowchart of the system:
     Tensorflow
     
     Torch
+    
+    Keras
 
   Technology Selection and reason behind selection including comparisons:
     OpenCV library is widely used and supported.
