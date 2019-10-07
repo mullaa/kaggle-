@@ -98,5 +98,5 @@ Before CNN, we need to spend time on selecting the proper features for classifyi
 
 The flowchart of the system:
 
-<img src="https://<img src="https://github.com/mullaa/kaggle-/blob/master/pictures/defects/3%20label.png">">
+<img src="https://github.com/mullaa/kaggle-/blob/master/pictures/defects/Kaggle_flowchart.png">
 
