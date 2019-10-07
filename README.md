@@ -42,6 +42,11 @@ Triple-class
   The product will at a minimum be able to classify the image, its defect pixel location and output results into a folder for the user to view. The product will identify with moderate accuracy all four class type defects. For this product, a user interface is not required, but if time permits, we will create a simple user interface to allow the user to point to the directory of images for classification. There will be another window that outputs all the image defects for viewing, along with their filename. Also if times permits, we will refine our algorithm to be able to identify multi-label defects and triple-label defects
  
   ## Initial Plan of Attack
+  -Have each person in the team select a classification method and try to implement it on a small data set.
+  
+  -Report their findings and we all determine the pros and cons of each classification method.
+  
+  -We all agree on a dataset and start to really work on optimizing the classification.
   
   -Pick a classification method and beginning small set training and classifcation. The reason why we try small data sets first is because images have many pixels. This in turn increases the processing time. 
   
@@ -75,7 +80,12 @@ Triple-class
   Technology Selection and reason behind selection including comparisons:
     OpenCV library is widely used and supported.
     Python is one of the languages required by the Kaggle competition
-    Different algorithm. Eg: Anomaly detection,k-nearest neighbors/k-NN, SVM, CNN (Convolution Neural Networks)
+    Different algorithm. Eg: Anomaly detection,k-nearest neighbors/k-NN, SVM, logistic regression, random forest, and CNN (Convolution Neural Networks)
+    CNN apparently does all the busy work to extract the features from the images. It handles the entire feature engineering part. In typical CNN architectures, there are multiple layers. Beginning layers are extracting the low-level features and end level layers extract high-level features from the image.
+    The difficulty for images is extracting the correct features for classification which apparenly CNN solves.
+
+Before CNN, we need to spend time on selecting the proper features for classifying the image.
+    
     Any test or verification programs
     
   Testing scenario:
