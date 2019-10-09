@@ -46,7 +46,7 @@ Triple-class
   
   -Report their findings and we all determine the pros and cons of each classification method.
   
-  -We all agree on a dataset and start to really work on optimizing the classification.
+  -We all agree on a classification method and start to really work on optimizing the classification.
   
   -After picking a classification method, we begin optimization on a small training set and test set classification. The reason why we try small data sets first is because images have many pixels. This in turn increases the processing time. 
   
