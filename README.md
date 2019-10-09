@@ -88,14 +88,11 @@ The flowchart of the system:
 
   Technology Selection and reason behind selection including comparisons:
     OpenCV library is widely used and supported.
-    Python is one of the languages required by the Kaggle competition
+    Python high level programming languange that is popular for machine learning. Lots of packages are available and written in python.
     Different algorithm. Eg: Anomaly detection,k-nearest neighbors/k-NN, SVM, logistic regression, random forest, and CNN (Convolution Neural Networks)
     CNN apparently does all the busy work to extract the features from the images. It handles the entire feature engineering part. In typical CNN architectures, there are multiple layers. Beginning layers are extracting the low-level features and end level layers extract high-level features from the image.
     The difficulty for images is extracting the correct features for classification which apparently CNN solves.
-
-Before CNN, we need to spend time on selecting the proper features for classifying the image.
-    
-    Any test or verification programs
+    All other methods would require spending time on selecting the proper features for classifying the image.
     
   Testing scenario:
   
