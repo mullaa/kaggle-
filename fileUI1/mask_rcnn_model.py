@@ -13,6 +13,7 @@ import cv2
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 from imgaug import augmenters as iaa
 
 import itertools
@@ -25,6 +26,7 @@ import mrcnn.model as modellib
 from mrcnn import visualize
 from mrcnn.model import log
 from threading import Thread
+from datetime import datetime
 
 IMAGE_SIZE = 512
 NUM_CATS = 4
@@ -63,11 +65,59 @@ class mask_rcnn_model():
         img = cv2.resize(img, (IMAGE_SIZE, IMAGE_SIZE), interpolation=cv2.INTER_AREA)  
         return img
 
+    # Fix overlapping masks
+    def refine_masks(self, masks, rois):
+        areas = np.sum(masks.reshape(-1, masks.shape[-1]), axis=0)
+        mask_index = np.argsort(areas)
+        union_mask = np.zeros(masks.shape[:-1], dtype=bool)
+        for m in mask_index:
+            masks[:, :, m] = np.logical_and(masks[:, :, m], np.logical_not(union_mask))
+            union_mask = np.logical_or(masks[:, :, m], union_mask)
+        for m in range(masks.shape[-1]):
+            mask_pos = np.where(masks[:, :, m]==True)
+            if np.any(mask_pos):
+                y1, x1 = np.min(mask_pos, axis=1)
+                y2, x2 = np.max(mask_pos, axis=1)
+                rois[m, :] = [y1, x1, y2, x2]
+        return masks, rois
+
+    # REF: https://www.kaggle.com/stainsby/fast-tested-rle
+
+    def rle_encode(self, mask_image):
+        pixels = mask_image.flatten()
+        # We avoid issues with '1' at the start or end (at the corners of 
+        # the original image) by setting those pixels to '0' explicitly.
+        # We do not expect these to be non-zero for an accurate mask, 
+        # so this should not harm the score.
+        pixels[0] = 0
+        pixels[-1] = 0
+        runs = np.where(pixels[1:] != pixels[:-1])[0] + 2
+        runs[1::2] = runs[1::2] - runs[:-1:2]
+        return runs
+
+    def rle_to_string(self, runs):
+        return ' '.join(str(x) for x in runs)
+
+    # For run like map-function
+    def mapfunc_img_to_rle_stainsby(self, mat):
+        return [self.rle_to_string(self.rle_encode(mat)) for mat in mat]
+
     def run_model(self):
         ccr = 0
         vis_count = 0
+        x = [1,2,3,4]
+        y = [0,0,0,0]
         category_list = ["1", "2", "3", "4"]
-        for i in range(5):
+        # datetime object containing current date and time
+        now = datetime.now()
+
+        # dd/mm/YY H:M:S
+        dt_string = now.strftime("%d%m%Y_%H_%M_%S")
+        f = open("./output/"+dt_string+".csv", 'w')
+        f.write("ImageId_ClassId, EncodedPixels\n")
+        
+        for i in range(100):
+            mat_of_masks = []
             image_id = self.test_df.sample()["image_id"].values[0]
             image_path = str('./train_images/'+image_id)
             img = cv2.imread(image_path)
@@ -78,7 +128,8 @@ class mask_rcnn_model():
             if(result[0]['class_ids'].size != 0):
                 if result[0]['class_ids'][0] in self.test_dict[image_id]:
                     ccr += 1
-                    
+                
+                y[result[0]['class_ids'][0]-1] += 1
             if r['masks'].size > 0:
                 masks = np.zeros((img.shape[0], img.shape[1], r['masks'].shape[-1]), dtype=np.uint8)
                 for m in range(r['masks'].shape[-1]):
@@ -88,12 +139,26 @@ class mask_rcnn_model():
                 y_scale = img.shape[0]/IMAGE_SIZE
                 x_scale = img.shape[1]/IMAGE_SIZE
                 rois = (r['rois'] * [y_scale, x_scale, y_scale, x_scale]).astype(int)
+                masks, rois = self.refine_masks(masks, rois)
+                for m in range(masks.shape[-1]):
+                    mat_of_masks.append(masks[:, :, m])
             else:
                 masks, rois = r['masks'], r['rois']
 
-            visualize.display_instances(img, rois, masks, r['class_ids'], 
+            if(r['class_ids'].size > 0):
+                encoded_list = self.mapfunc_img_to_rle_stainsby(mat_of_masks[0])
+                encoded_list = [x.strip(' ') for x in encoded_list]
+                f.write(image_id+"_"+str(r['class_ids'][0])+", "+(" ".join(encoded_list).strip()))
+                f.write("\n")
+
+        visualize.display_instances(img, rois, masks, r['class_ids'], 
                                 ['bg']+category_list, r['scores'],title=image_id)
-        ccr = ccr/5.0
+        plt.figure()
+        sns.barplot(x,y)
+        plt.show()
+        plt.xlabel("Class ID")
+        plt.ylabel("Count")
+        ccr = ccr/100.0
         print(ccr)
 
          
