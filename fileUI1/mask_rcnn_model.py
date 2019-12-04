@@ -81,26 +81,16 @@ class mask_rcnn_model():
                 rois[m, :] = [y1, x1, y2, x2]
         return masks, rois
 
-    # REF: https://www.kaggle.com/stainsby/fast-tested-rle
-
-    def rle_encode(self, mask_image):
-        pixels = mask_image.flatten()
-        # We avoid issues with '1' at the start or end (at the corners of 
-        # the original image) by setting those pixels to '0' explicitly.
-        # We do not expect these to be non-zero for an accurate mask, 
-        # so this should not harm the score.
-        pixels[0] = 0
-        pixels[-1] = 0
-        runs = np.where(pixels[1:] != pixels[:-1])[0] + 2
-        runs[1::2] = runs[1::2] - runs[:-1:2]
-        return runs
-
-    def rle_to_string(self, runs):
+    def mask2rle(self, img):
+        '''
+        img: numpy array, 1 - mask, 0 - background
+        Returns run length as string formated
+        '''
+        pixels= img.T.flatten()
+        pixels = np.concatenate([[0], pixels, [0]])
+        runs = np.where(pixels[1:] != pixels[:-1])[0] + 1
+        runs[1::2] -= runs[::2]
         return ' '.join(str(x) for x in runs)
-
-    # For run like map-function
-    def mapfunc_img_to_rle_stainsby(self, mat):
-        return [self.rle_to_string(self.rle_encode(mat)) for mat in mat]
 
     def run_model(self):
         ccr = 0
@@ -146,9 +136,7 @@ class mask_rcnn_model():
                 masks, rois = r['masks'], r['rois']
 
             if(r['class_ids'].size > 0):
-                encoded_list = self.mapfunc_img_to_rle_stainsby(mat_of_masks[0])
-                encoded_list = [x.strip(' ') for x in encoded_list]
-                f.write(image_id+"_"+str(r['class_ids'][0])+", "+(" ".join(encoded_list).strip()))
+                f.write(image_id+"_"+str(r['class_ids'][0])+", "+self.mask2rle(mat_of_masks[0]))
                 f.write("\n")
 
         visualize.display_instances(img, rois, masks, r['class_ids'], 
