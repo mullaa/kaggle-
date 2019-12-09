@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>672</width>
-    <height>474</height>
+    <width>529</width>
+    <height>365</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Steel Defect Detection</string>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
@@ -23,16 +23,14 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>100</y>
-      <width>351</width>
-      <height>251</height>
+      <x>0</x>
+      <y>0</y>
+      <width>531</width>
+      <height>321</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(209, 228, 255);
-border-color: 20px rgb(184, 197, 255);
-border-radius: 20px</string>
+     <string notr="true"/>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -43,17 +41,19 @@ border-radius: 20px</string>
     <widget class="QLabel" name="label_2">
      <property name="geometry">
       <rect>
-       <x>50</x>
-       <y>60</y>
-       <width>281</width>
-       <height>71</height>
+       <x>70</x>
+       <y>30</y>
+       <width>411</width>
+       <height>91</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <family>Zapfino</family>
-       <pointsize>18</pointsize>
-       <italic>true</italic>
+       <family>American Typewriter</family>
+       <pointsize>36</pointsize>
+       <weight>75</weight>
+       <italic>false</italic>
+       <bold>true</bold>
       </font>
      </property>
      <property name="text">
@@ -63,11 +63,17 @@ border-radius: 20px</string>
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>60</x>
+       <x>70</x>
        <y>140</y>
-       <width>131</width>
+       <width>161</width>
        <height>21</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>American Typewriter</family>
+       <pointsize>18</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>Choose the folder:</string>
@@ -76,10 +82,10 @@ border-radius: 20px</string>
     <widget class="QComboBox" name="comboBox">
      <property name="geometry">
       <rect>
-       <x>50</x>
+       <x>70</x>
        <y>170</y>
-       <width>211</width>
-       <height>21</height>
+       <width>331</width>
+       <height>51</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -96,65 +102,13 @@ border-radius: 20px</string>
       </property>
      </item>
     </widget>
-    <widget class="QToolButton" name="toolButton">
-     <property name="geometry">
-      <rect>
-       <x>260</x>
-       <y>170</y>
-       <width>21</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>...</string>
-     </property>
-     <property name="arrowType">
-      <enum>Qt::NoArrow</enum>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton">
-     <property name="geometry">
-      <rect>
-       <x>280</x>
-       <y>0</y>
-       <width>31</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(155, 139, 255);
-border-color: rgb(1, 1, 1);
-border-radius: 5px;</string>
-     </property>
-     <property name="text">
-      <string>-</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_2">
-     <property name="geometry">
-      <rect>
-       <x>310</x>
-       <y>0</y>
-       <width>31</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(119, 100, 255);
-border-color: rgb(4, 4, 4);
-border-radius: 5px;</string>
-     </property>
-     <property name="text">
-      <string>x</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="pushButton_3">
      <property name="geometry">
       <rect>
-       <x>280</x>
-       <y>170</y>
-       <width>61</width>
-       <height>25</height>
+       <x>400</x>
+       <y>180</y>
+       <width>71</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="text">
@@ -164,6 +118,19 @@ border-radius: 5px;</string>
       <bool>false</bool>
      </property>
     </widget>
+    <widget class="QProgressBar" name="progressBar">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>230</y>
+       <width>401</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="value">
+      <number>0</number>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -171,7 +138,7 @@ border-radius: 5px;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>672</width>
+     <width>529</width>
      <height>22</height>
     </rect>
    </property>
@@ -179,7 +146,24 @@ border-radius: 5px;</string>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>progressBar</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>461</x>
+     <y>214</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>426</x>
+     <y>260</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
  <slots>
   <slot>slot1()</slot>
  </slots>
